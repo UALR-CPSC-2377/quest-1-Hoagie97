@@ -1,6 +1,5 @@
 
 #include "engine.h"
-
 // stdlib
 #include <fstream>
 #include <iostream>
@@ -8,6 +7,7 @@
 // local
 #include "Object.h"
 #include "GUI.h"
+using namespace std;
 
 int
 loadBlockData (
@@ -15,6 +15,16 @@ loadBlockData (
     Object p_objects[],
     const GUI& p_gui
 ) {
+    ifstream infile;
+    infile.open(p_gameFile);
+
+    int gameObjects;
+    infile >> gameObjects;
+
+    for (int i = gameObjects; i < p_objects->top; i++) {
+        
+    }
+
     /*
         -- loadBlockData   --
         Parameters:

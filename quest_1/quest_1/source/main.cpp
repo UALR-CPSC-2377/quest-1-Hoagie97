@@ -25,7 +25,8 @@ int main (int argc, char *argv[]){
     int numObjects = loadBlockData(gameFile, objects, gui);
 
 	//Task 3: Randomize Samus Sprite Appearance
-	//numObjects++; // uncomment this when you start task 3
+	numObjects++;
+	objects[0].type = Type::player;  // this is just a placeholder
 	randomPlayerData(numObjects, objects, gui);
 
 	bool quit = false;
