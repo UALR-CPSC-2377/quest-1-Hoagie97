@@ -1,5 +1,6 @@
 
 #include "engine.h"
+
 // stdlib
 #include <fstream>
 #include <iostream>
@@ -9,20 +10,16 @@
 #include "GUI.h"
 using namespace std;
 
-int
-loadBlockData (
-    const std::string& p_gameFile,
-    Object p_objects[],
-    const GUI& p_gui
-) {
+int loadBlockData (const std::string& p_gameFile, Object p_objects[], const GUI& p_gui) {
     ifstream infile;
     infile.open(p_gameFile);
 
     int gameObjects;
-    infile >> gameObjects;
 
-    for (int i = gameObjects; i < p_objects->top; i++) {
-        
+    if (infile.is_open) {
+        for (int i = 0; i < p_gui.numColumns; i++) {
+            for (int j = 0; j < p_gui.numRows; j++) {
+                infile >> gameObjects;
     }
 
     /*
@@ -43,12 +40,7 @@ loadBlockData (
     return 0; // placeholder
 }
 
-void
-randomPlayerData (
-    const int p_numObjects,
-    Object p_objects[],
-    const GUI & p_gui
-) {
+void randomPlayerData (const int p_numObjects, Object p_objects[], const GUI & p_gui) {
     /*
         -- randomPlayerData   --
         Parameters:

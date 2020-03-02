@@ -4,8 +4,9 @@
 #include <string>
 #include "Object.h"
 #include "GUI.h"
+using namespace std;
 
-int loadBlockData (const std::string & gameFile, Object objects[], const GUI & gui);
+int loadBlockData(const std::string& gameFile, Object objects[], const GUI& gui);
 void randomPlayerData (const int numObjects, Object objects[], const GUI & gui);
 int getMaxYOfBlock (const Object & player, const Object objects[], int numObjects);
 
