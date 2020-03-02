@@ -16,10 +16,35 @@ int loadBlockData (const std::string& p_gameFile, Object p_objects[], const GUI&
 
     int gameObjects;
 
-    if (infile.is_open) {
+    while (!infile.eof()) {
         for (int i = 0; i < p_gui.numColumns; i++) {
             for (int j = 0; j < p_gui.numRows; j++) {
                 infile >> gameObjects;
+            }
+        }
+        switch (gameObjects) {
+        case 0:
+            Type::none;
+        case 1:
+            Type::block;
+        case 2:
+            Type::belowBlock;
+        case 3:
+            Type::belowBlock2;
+        case 4:
+            Type::wall1;
+        case 5:
+            Type::wall2;
+        case 6:
+            Type::waterSurface;
+        case 7:
+            Type::water;
+        case 8:
+            Type::player;
+        case 9:
+            Type::numTypes;
+        }
+        return gameObjects;
     }
 
     /*
@@ -37,7 +62,7 @@ int loadBlockData (const std::string& p_gameFile, Object p_objects[], const GUI&
         p_objects with the appropriate data.
     */
 
-    return 0; // placeholder
+    return gameObjects; // placeholder
 }
 
 void randomPlayerData (const int p_numObjects, Object p_objects[], const GUI & p_gui) {
@@ -58,12 +83,7 @@ void randomPlayerData (const int p_numObjects, Object p_objects[], const GUI & p
     */
 }
 
-int
-getMaxYOfBlock (
-    const Object& player,
-    const Object objects[],
-    int numObjects
-) {
+int getMaxYOfBlock (const Object& player, const Object objects[], int numObjects) {
     /*
         -- getMaxYOfBlock --
         Parameters
