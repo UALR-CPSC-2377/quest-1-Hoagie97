@@ -17,14 +17,28 @@ int loadBlockData(const std::string& p_gameFile, Object p_objects[], const GUI& 
     int gameObjects;
 
     while (!infile.eof()) {
-        for (int i = 0; i < (p_gui.numColumns) * (p_gui.numRows) + 1; i++) { //iterate over file contents
-            infile >> gameObjects;
-            if (gameObjects == 1) {
-                p_objects[gameObjects].type = Type::block; //FINALLY GOT A BLOCK TO DISPLAY
+        for (int i = 0; i < p_gui.numColumns; i++) {
+            for (int j = 0; j < p_gui.numRows; j++) {//iterate over file contents 
+                infile >> gameObjects;
+                for (int gameObjects = 0; gameObjects < 8; gameObjects++) {
+                    p_objects[0].type = Type::none;
+                    p_objects[1].type = Type::block;
+                    p_objects[2].type = Type::belowBlock;
+                    p_objects[3].type = Type::belowBlock2;
+                    p_objects[4].type = Type::wall1;
+                    p_objects[5].type = Type::wall2;
+                    p_objects[6].type = Type::waterSurface;
+                    p_objects[7].type = Type::water;
+                    p_objects[8].type = Type::player;
+                }
             }
         }
     }
 
+
+                
+  
+    
 
     /*
         -- loadBlockData   --
